@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desítkové na Binární</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+<body>
+
+<h2 style ="background-color: rgb(255, 61, 136);">Převod Desítkového Čísla na Binární</h2>
+
+<label for="decimalInput">Zadejte desítkové číslo:</label>
+<input type="text" id="decimalInput">
+<button style ="background-color: rgb(231, 129, 163);" onclick="convertDecimalToBinary()">Převést</button>
+
+<p id="result"></p>
+
+<script>
+function convertDecimalToBinary() {
+    var decimalInput = parseInt(document.getElementById("decimalInput").value);
+    var binaryResult = '';
+
+    if (isNaN(decimalInput)) {
+        document.getElementById("result").innerHTML = "Zadejte platné desítkové číslo.";
+        return;
+    }
+
+    if (decimalInput === 0) {
+        binaryResult = '0';
+    } else {
+        while (decimalInput > 0) {
+            binaryResult = (decimalInput % 2).toString() + binaryResult;
+            decimalInput = Math.floor(decimalInput / 2);
+        }
+    }
+
+    document.getElementById("result").innerHTML = "Binární číslo: " + binaryResult;
+}
+</script>
+
+
+</body>
+</html>
